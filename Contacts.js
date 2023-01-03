@@ -109,5 +109,15 @@ class Contacts {
             + " Email = " + this.email;
     }
 }
-    let contact1 = new Contacts("Sahil", "Khan", "Ambazari", "Nagpur", "MHGJ", "447141", "987962080", "sahil@gmail.com");
-    console.log(contact1.toString());
+// UC1:Adding the contact in the address Book
+   // let contact1 = new Contacts("Sahil", "Khan", "Ambazari", "Nagpur", "MHGJ", "447141", "987962080", "sahil@gmail.com");
+    //console.log(contact1.toString());
+
+    //UC3: Creating array of contacts
+    let arr=new Array(new Contacts("Sahil", "Khan", "Ambazari", "Nagpur", "MHGJ", "447141", "987962080", "sahil@gmail.com"), 
+    new Contacts("Saurav", "Abc", "Colony", "Banglore", "UPKJ", "447554", "887962080", "saurav@gmail.com"),
+    new Contacts("Ankit", "Xyz", "Patna", "Delhi", "WBDL", "541441", "123962080", "ankit@gmail.com"));
+   
+    for(let i=0; i<arr.length; i++){
+        console.log(arr[i].toString());
+    }
