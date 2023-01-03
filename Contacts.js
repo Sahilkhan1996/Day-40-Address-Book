@@ -1,3 +1,5 @@
+const ps4 = require("prompt-sync");
+const prompt4 = ps4();
 class Contacts {
     constructor(firstName, lastName, address, city, state, zip, phoneNumber, email) {
         this.firstName = firstName;
@@ -11,7 +13,7 @@ class Contacts {
     }
     set firstName(firstName) {
         let pattern = RegExp('^[A-Z]{1}[a-z]{2,}$');
-        if(pattern.test(firstName)) {
+        if (pattern.test(firstName)) {
             this._firstName = firstName;
         } else {
             throw "First Name is invalid.";
@@ -23,7 +25,7 @@ class Contacts {
 
     set lastName(lastName) {
         let pattern = RegExp('^[A-Z]{1}[A-Za-z]{2,}$');
-        if(pattern.test(lastName)) {
+        if (pattern.test(lastName)) {
             this._lastName = lastName
         } else {
             throw "Last Name is invalid.";
@@ -35,8 +37,8 @@ class Contacts {
 
     set address(address) {
         let pattern = RegExp('^[A-Za-z]{4,}$');
-        if(pattern.test(address)) {
-          this._address = address;  
+        if (pattern.test(address)) {
+            this._address = address;
         } else throw "Address Must have 4 Characters";
     }
 
@@ -46,7 +48,7 @@ class Contacts {
 
     set city(city) {
         let pattern = RegExp('^[A-Za-z]{4,}$');
-        if(pattern.test(city)) {
+        if (pattern.test(city)) {
             this._city = city;
         } else throw "State Must have 4 Characters";
     }
@@ -57,7 +59,7 @@ class Contacts {
 
     set state(state) {
         let pattern = RegExp('^[A-Za-z]{4,}$');
-        if(pattern.test(state)) {
+        if (pattern.test(state)) {
             this._state = state;
         } else throw "State Must have 4 Charactes";
     }
@@ -66,20 +68,20 @@ class Contacts {
         return this._state;
     }
 
-    set zip(zip){
+    set zip(zip) {
         let Pattern = RegExp('^[0-9]{6}$');
-        if(Pattern.test(zip)) {
+        if (Pattern.test(zip)) {
             this._zip = zip;
         } else throw 'Zip Code must be of 6 digits.';
     }
 
-    get zip(){
+    get zip() {
         return this._zip;
     }
 
     set phoneNo(phoneNo) {
         let Pattern = RegExp('^[0-9]{2}|\s|[0-9]{10}$');
-        if(Pattern.test(phoneNo)) {
+        if (Pattern.test(phoneNo)) {
             this._phoneno = phoneNo;
         } else throw 'Invalid Phone Number.';
     }
@@ -88,9 +90,9 @@ class Contacts {
         return this._phoneno;
     }
 
-    set email(email){
+    set email(email) {
         let Pattern = RegExp('^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$');
-        if(Pattern.test(email)){
+        if (Pattern.test(email)) {
             this._email = email;
         } else throw "Invalid Email ID";
     }
@@ -110,14 +112,51 @@ class Contacts {
     }
 }
 // UC1:Adding the contact in the address Book
-   // let contact1 = new Contacts("Sahil", "Khan", "Ambazari", "Nagpur", "MHGJ", "447141", "987962080", "sahil@gmail.com");
-    //console.log(contact1.toString());
+// let contact1 = new Contacts("Sahil", "Khan", "Ambazari", "Nagpur", "MHGJ", "447141", "987962080", "sahil@gmail.com");
+//console.log(contact1.toString());
 
-    //UC3: Creating array of contacts
-    let arr=new Array(new Contacts("Sahil", "Khan", "Ambazari", "Nagpur", "MHGJ", "447141", "987962080", "sahil@gmail.com"), 
+//UC3: Creating array of contacts
+let arr = new Array(new Contacts("Sahil", "Khan", "Ambazari", "Nagpur", "MHGJ", "447141", "987962080", "sahil@gmail.com"),
     new Contacts("Saurav", "Abc", "Colony", "Banglore", "UPKJ", "447554", "887962080", "saurav@gmail.com"),
     new Contacts("Ankit", "Xyz", "Patna", "Delhi", "WBDL", "541441", "123962080", "ankit@gmail.com"));
-   
-    for(let i=0; i<arr.length; i++){
+
+for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i].toString());
+}
+console.log("-------------------------");
+//UC4: Editing contacts using the name
+function editContacts(contact) {
+    let firstName = prompt4("Enter the First Name is:");
+    contact.firstName = firstName;
+    let lastName = prompt4("Enter the last Name is:");
+    contact.lastName = lastName;
+    let address = prompt4("Enter your Address:");
+    contact.address = address;
+    let city = prompt4("Enter your City:");
+    contact.city = city;
+    let state = prompt4("Enter your State:");
+    contact.state = state;
+    let zip = prompt4("Enter your Zip:");
+    contact.zip = zip;
+    let pn = prompt4("Enter your phoneNumber:");
+    contact.phoneNumber = pn;
+    let emailaddress = prompt4("Enter your Email Address:");
+    contact.email = emailaddress;
+    contact = new Contacts(firstName, lastName, address, city, state, zip, pn, emailaddress);
+}
+let firstNameedit = prompt4("Enter the First Name you like to edit:");
+for (let i = 0; i < arr.length; i++) {
+    if (arr[i]._firstName == firstNameedit) {
+        console.log("Print matched: " + arr[i].toString());
+        editContacts(arr[i]);
+        console.log("Print matched: " + arr[i].toString());
+    }
+}
+printArray();
+
+function printArray() {
+    for (let i = 0; i < arr.length; i++) {
         console.log(arr[i].toString());
     }
+}
+
