@@ -194,6 +194,7 @@ function countContacts(){
     return arr.map(contact => contact._firstName)
     .reduce((start,firstName)=>start+=1,0);
 }
+//UC8:Search by City or State
 searchPersonthroughCityorstate();
 function searchPersonthroughCityorstate() {
     let parameter = prompt4("Select Search Parameter 1. City 2. State :");
