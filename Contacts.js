@@ -160,6 +160,7 @@ function printArray() {
         console.log(arr[i].toString());
     }
 }
+//UC5: delete contacts
 deleteContacts();
 function deleteContacts() {
     let firstNamedelete = prompt4("Enter the First Name you like to delete:");
@@ -186,10 +187,21 @@ function contactChecker(firstNamedelete, check) {
 
 }
 printArray();
+//UC6: count contacts
 let count=countContacts();
 console.log("total count of contacts are: "+count)
 function countContacts(){
     return arr.map(contact => contact._firstName)
     .reduce((start,firstName)=>start+=1,0);
 }
-
+searchPersonthroughCityorstate();
+function searchPersonthroughCityorstate() {
+    let parameter = prompt4("Select Search Parameter 1. City 2. State :");
+    if(parameter == 1) {
+        let city = prompt4("Enter the City to Search Person :");
+        console.log(arr.filter(contact => contact._city == city).map(contact => contact));
+    } else {
+        let state = prompt4("Enter the State to Search Person :");
+        console.log(arr.filter(contact => contact._state == state).map(contact => contact));
+    }
+}
