@@ -186,6 +186,10 @@ function contactChecker(firstNamedelete, check) {
 
 }
 printArray();
-
-
+let count=countContacts();
+console.log("total count of contacts are: "+count)
+function countContacts(){
+    return arr.map(contact => contact._firstName)
+    .reduce((start,firstName)=>start+=1,0);
+}
 
