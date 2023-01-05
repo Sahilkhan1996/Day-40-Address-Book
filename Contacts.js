@@ -206,3 +206,13 @@ function searchPersonthroughCityorstate() {
         console.log(arr.filter(contact => contact._state == state).map(contact => contact));
     }
 }
+countByCityState();
+function countByCityState() {
+    let cityArr = new Array();
+    let stateArr = new Array();
+    arr.forEach(contact => cityArr[contact._city] ? cityArr[contact._city] += 1 : cityArr[contact._city] = 1);
+   arr.forEach(contact => stateArr[contact._state] ? stateArr[contact._state] += 1 : stateArr[contact._state] = 1);
+
+    console.log("City Counts :"+cityArr);
+    console.log("State Counts :"+stateArr);
+}
